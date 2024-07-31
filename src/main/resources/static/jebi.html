@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벌칙은 너다! - 제비 뽑기</title>
+    <link rel="stylesheet" href="/css/jebiStyle.css">
+    <link rel="icon" href="/img/minipunish.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        .game-box .image-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            flex-wrap: nowrap;
+            position: relative;
+        }
+
+        .game-box .image-button img {
+            width: 100px; /* 원하는 크기로 조절 */
+            height: 100px;
+            display: block;
+            margin: 0 5px; /* 이미지 사이의 간격 조절 */
+            transition: transform 1s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake {
+            animation: shake 1s;
+        }
+
+        /* 중앙 정렬을 위한 CSS 추가 */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 수평 중앙 정렬 */
+            justify-content: center; /* 수직 중앙 정렬 */
+            margin: 20px 0;
+        }
+
+        .controls button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .controls button:active {
+            background-color: #003d80;
+            transform: scale(0.95);
+        }
+
+        /* 제비 개수와 꽝 개수 폰트 스타일 */
+        .info {
+            margin: 10px 0;
+            font-size: 18px;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            text-align: center; /* 중앙 정렬 */
+        }
+
+        .info span {
+            font-weight: 700;
+        }
+
+        /* 입력 필드 스타일 */
+        input[type="number"] {
+            font-size: 18px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            width: 60px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+        
+        .game-button.bomb-active {
+   background-color: #388e3c; /* 배경색 어두운 초록색 */
+    color: white; /* 글자 색상 하얀색 */
+   
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="logo-container">
+            <a href="home.html">
+                <img src="/img/punishlogo.png" alt="Game Logo" class="logo">
+            </a>
+        </header>
+        <main class="main-buttons">
+            <a href="bomb.html" class="game-button">폭탄</a>
+            <a href="rolling.html" class="game-button">돌림판</a>
+            <a href="jebi.html" class="game-button bomb-active">제비뽑기</a>
+        </main>
+        <div class="game-box home-page">
+            <!-- 이미지 버튼 추가 -->
+            <button class="image-button" onclick="handleImageClick()">
+                <!-- 초기 이미지 버튼 리스트를 JavaScript에서 추가 -->
+            </button>
+        </div>
+
+        <div class="controls">
+            <div class="info">
+                <span>제비 개수: </span><span id="raffleCount">0</span>
+            </div>
+            <div class="info">
+                <span>꽝 개수: </span><input type="number" id="failCountInput" value="1" min="1">
+            </div>
+            <button id="addButton" onclick="adjustButtons(1)">제비 추가</button>
+            <button id="removeButton" onclick="adjustButtons(-1)">제비 제거</button>
+            <button id="shuffleButton" onclick="shuffleAndDraw()">제비 섞기</button>
+            <audio id="gameAudio" src="/audio/shuffle.mp3"></audio>
+            <audio id="successAudio" src="/audio/success.mp3"></audio>
+            <audio id="failAudio" src="/audio/fail.mp3"></audio>
+        </div>
+
+      
+    </div>
+    
+     <img id="ureka" src="/img/ureka.jpg" alt="urekajpg">
+    
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/e.jnn_/" target="_blank">
+                <img src="/img/instagramlogo.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/Eu1j1n" target="_blank">
+                <img src="/img/githublogo.png" alt="GitHub">
+            </a>
+        </div>
+        <div class="contact-info">
+            <p>이메일: <a href="dmlwls7094@naver.com">dmlwls7094@naver.com</a></p>
+        </div>
+        <div class="site-map">
+            <a href="home.html">홈</a> | 
+            <a href="bomb.html">폭탄</a> | 
+            <a href="rolling.html">돌림판</a> | 
+            <a href="jebi.html">제비뽑기</a>
+        </div>
+        <p>&copy; Copyright 2024. euijin All rights reserved.</p>
+    </footer>
+      <script src="/js/jebi.js"></script>
+</body>
+</html>

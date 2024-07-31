@@ -1,0 +1,304 @@
+/* 전체 페이지 스타일 */
+body {
+            margin: 0; /* 기본 여백 제거 */
+            padding: 0; /* 기본 패딩 제거 */
+            min-height: 150vh; /* 전체 화면 높이 */
+            display: flex;
+            flex-direction: column; /* 수직 방향 정렬 */
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 22px;
+        }
+
+        .container {
+            flex: 1; /* 컨텐츠가 가능한 공간을 차지하도록 설정 */
+        }
+
+/* 로고 컨테이너 스타일 */
+.logo-container {
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    
+    margin-bottom: 25px; /* 로고와 버튼 사이의 간격 줄이기 */
+}
+
+/* 로고 이미지 스타일 */
+.logo {
+    width: 200px;
+    height: auto; /* 이미지 비율 유지 */
+}
+
+/* 메인 컨텐츠 스타일 */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* 버튼을 포함한 메인 컨테이너 스타일 */
+.main-buttons {
+    display: flex;
+    margin-left: 40px;
+    flex-direction: row; /* 버튼을 가로로 정렬 */
+    align-items: center; /* 버튼을 가운데 정렬 */
+    justify-content: center; /* 버튼을 컨테이너의 가운데 정렬 */
+    gap: 80px; /* 버튼 간의 간격 */
+    margin-bottom: 30px; /* 버튼과 게임 박스 사이의 간격 */
+}
+
+/* 버튼 스타일 */
+.game-button {
+    background-color: white; /* 기본 배경색 하얀색 */
+    border: 2px solid #4CAF50; /* 버튼 경계선 초록색 */
+    color: #4CAF50; /* 글자 색상 초록색 */
+    padding: 15px 30px; /* 버튼 안쪽 여백 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 텍스트 장식 제거 */
+    display: inline-block; /* 버튼의 인라인 블록 설정 */
+    font-size: 18px; /* 글자 크기 */
+    border-radius: 8px; /* 버튼 모서리 둥글기 */
+    cursor: pointer; /* 마우스 커서 포인터로 변경 */
+    transition: background-color 0.3s, color 0.3s; /* 배경색과 글자색 변화에 대한 전환 효과 */
+}
+
+/* 버튼에 마우스를 올렸을 때 스타일 */
+.game-button:hover {
+    background-color: #4CAF50; /* 배경색 초록색 */
+    color: white; /* 글자 색상 하얀색 */
+}
+
+/* 버튼 클릭 시 스타일 */
+.game-button:active {
+    background-color: #388e3c; /* 배경색 어두운 초록색 */
+    color: white; /* 글자 색상 하얀색 */
+}
+
+/* 게임 박스 스타일 */
+.game-box {
+            display: flex; /* Flexbox를 사용하여 중앙 정렬 */
+            flex-direction: column; /* 수직 방향으로 요소 정렬 */
+            justify-content: center; /* 수직 중앙 정렬 */
+            align-items: center; /* 수평 중앙 정렬 */
+            height: 400px; /* 필요한 높이 조정 */
+            border: 2px solid #ccc; /* 선택적으로 테두리 추가 */
+            padding: 20px; /* 여백 추가 */
+            margin: 20px auto; /* 페이지 가운데 정렬 */
+            border-radius: 10px; /* 둥근 모서리 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+            background-color: #f9f9f9; /* 배경 색상 */
+            position: relative; /* 자식 요소의 위치 설정 허용 */
+            transition: background-color 0.3s ease; /* 호버 효과에 대한 부드러운 전환 */
+        }
+
+        .game-box:hover {
+            background-color: #eaeaea; /* 호버 시 배경 색상 변경 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 증가 */
+        }
+
+/* 홈 페이지의 게임 박스에만 적용되는 스타일 */
+.home-page::before {
+    content: "위에서 벌칙 게임을 골라주세요!"; /* 텍스트 내용 */
+    position: absolute; /* 절대 위치 */
+    top: 50%; /* 수직 가운데 정렬 */
+    left: 50%; /* 수평 가운데 정렬 */
+    transform: translate(-50%, -50%); /* 가운데 정렬을 위한 변환 */
+    font-size: 26px; /* 글자 크기 */
+    font-weight: bold; /* 글자 굵기 */
+    color: #4CAF50; /* 글자 색상 */
+    animation: blink 1s infinite; /* 애니메이션 추가 */
+}
+
+/* 깜빡이는 애니메이션 */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; /* 완전히 보임 */
+    }
+    50% {
+        opacity: 0; /* 완전히 사라짐 */
+    }
+}
+
+.advertise1, .advertise2 {
+    margin: 20px auto; /* 광고 박스 위아래 간격 설정 */
+    text-align: center; /* 중앙 정렬 */
+    border: 1px solid #ddd; /* 얇은 경계선 추가 */
+    padding: 10px; /* 안쪽 여백 추가 */
+    height: 100px;
+    max-width: 1000px; /* 최대 너비 설정 */
+    box-sizing: border-box; /* 경계선을 포함하여 너비 계산 */
+}
+
+#ureka {
+    width: 100%; /* 너비를 부모 컨테이너의 100%로 설정 */
+    height: auto; /* 높이를 자동으로 조절하여 비율 유지 */
+    max-width: 800px; /* 최대 너비 설정 (예: 800px) */
+    display: block; /* 기본 블록 요소로 설정 */
+    margin: 20px auto; /* 상하 여백과 중앙 정렬 */
+}
+
+ .game-box {
+            display: flex; /* Flexbox를 사용하여 중앙 정렬 */
+            flex-direction: column; /* 수직 방향으로 요소 정렬 */
+            justify-content: center; /* 수직 중앙 정렬 */
+            align-items: center; /* 수평 중앙 정렬 */
+            height: 400px; /* 필요한 높이 조정 */
+            border: 2px solid #ccc; /* 선택적으로 테두리 추가 */
+            padding: 20px; /* 여백 추가 */
+            margin: 20px auto; /* 페이지 가운데 정렬 */
+            border-radius: 10px; /* 둥근 모서리 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+            background-color: #f9f9f9; /* 배경 색상 */
+            position: relative; /* 자식 요소의 위치 설정 허용 */
+            transition: background-color 0.3s ease; /* 호버 효과에 대한 부드러운 전환 */
+        }
+
+        .game-box:hover {
+            background-color: #eaeaea; /* 호버 시 배경 색상 변경 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 증가 */
+        }
+
+        .game-box img {
+            max-width: 230px; /* 이미지가 넘치지 않도록 설정 */
+            height: 230px; /* 비율 유지 */
+            margin-left : 10px;
+            display: none; /* 초기에는 이미지 숨기기 */
+            cursor: pointer; /* 클릭 가능한 이미지로 설정 */
+        }
+
+       
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake {
+            animation: shake 0.5s infinite; /* 애니메이션을 0.5초 간격으로 반복 */
+        }
+
+         .game-box p {
+            font-size: 1.5em; /* 글자 크기 증가 */
+            font-weight: bold; /* 글자 두껍게 */
+            color: #333; /* 글자 색상 */
+            margin: 10px 0; /* 글자 주변 여백 */
+            text-align: center; /* 중앙 정렬 */
+        }
+
+        .timer {
+            font-size: 2em; /* 타이머 글자 크기 */
+            color: #ff0000; /* 타이머 색상 */
+            margin: 15px 0; /* 타이머 위아래 여백 */
+            display: none; /* 초기에는 숨김 */
+        }
+
+        /* 플레이어 선택 버튼 스타일 */
+        .player-selection {
+            display: flex;
+            gap: 10px; /* 버튼 간 간격 */
+            margin-top: 15px; /* 글자와 버튼 사이 간격 */
+        }
+
+        .player-button {
+            background-color: #007BFF; /* 버튼 배경 색상 */
+            color: white; /* 버튼 글자 색상 */
+            font-size: 1em; /* 글자 크기 */
+            border: none; /* 기본 테두리 제거 */
+            padding: 10px 20px; /* 버튼 여백 */
+            border-radius: 5px; /* 둥근 모서리 */
+            cursor: pointer; /* 호버 시 포인터 커서 */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* 부드러운 전환 효과 */
+        }
+
+        .player-button:hover {
+            background-color: #0056b3; /* 호버 시 버튼 색상 어두워짐 */
+            transform: scale(1.05); /* 호버 시 크기 약간 증가 */
+        }
+
+      
+        @media (max-width: 600px) {
+            .game-box {
+                height: 200px; 
+            }
+
+            .game-box p {
+                font-size: 1.2em; 
+            }
+
+            .player-button {
+                font-size: 0.9em; 
+                padding: 8px 16px; 
+            }
+        }
+        
+         .footer {
+             background-color: #000000; /* 어두운 배경 색상 */
+            color: #fff; /* 글자 색상 */
+            padding: 20px; /* 내부 여백 */
+            text-align: center; /* 중앙 정렬 */
+            position: relative; /* 위치 설정 */
+            width: 100%; /* 전체 너비 */
+            margin-top: auto; /* 컨텐츠 아래로 밀어내기 */
+        }
+
+        .footer .social-links {
+            margin-bottom: 15px; /* 소셜 링크와 저작권 간격 */
+        }
+
+        .footer .social-links a {
+            color: #fff; /* 링크 색상 */
+            margin: 0 10px; /* 링크 간 간격 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+            font-size: 1.5em; /* 아이콘 크기 */
+        }
+
+        .footer .social-links a:hover {
+            color: #f39c12; /* 호버 시 색상 변경 */
+        }
+
+        .footer .contact-info {
+            margin-bottom: 15px; /* 연락처와 저작권 간 간격 */
+        }
+
+        .footer .contact-info a {
+            color: #fff; /* 링크 색상 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        .footer .contact-info a:hover {
+            color: #f39c12; /* 호버 시 색상 변경 */
+        }
+
+        .footer .site-map {
+            margin-top: 15px; /* 사이트 맵과 저작권 간 간격 */
+        }
+
+        .footer .site-map a {
+            color: #fff; /* 링크 색상 */
+            margin: 0 10px; /* 링크 간 간격 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        .footer .site-map a:hover {
+            color: #f39c12; /* 호버 시 색상 변경 */
+        }
+
+        /* 아이콘 이미지 스타일 */
+        .footer .social-links img {
+            width: 24px; /* 아이콘 너비 */
+            height: 24px; /* 아이콘 높이 */
+            vertical-align: middle; /* 수직 정렬 */
+        }
+        
+        .game-button.bomb-active {
+   background-color: #388e3c; /* 배경색 어두운 초록색 */
+    color: white; /* 글자 색상 하얀색 */
+   
+}
+
+
+
+
+

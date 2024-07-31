@@ -1,0 +1,189 @@
+
+body {
+            background-image: url('/img/universe.jpg');
+            background-size: cover; /* 이미지를 화면에 맞게 확대/축소 */
+            background-repeat: no-repeat; /* 이미지 반복 방지 */
+            background-position: center; /* 이미지를 중앙에 배치 */
+            background-attachment: fixed; /* 스크롤 시 배경 고정 */
+            font-family: 'Nanum Pen Script', cursive; /* 폰트 설정 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* 전체 페이지 높이 설정 */
+}
+
+        .container {
+            flex: 1; /* 컨텐츠가 가능한 공간을 차지하도록 설정 */
+        }
+
+/* 로고 컨테이너 스타일 */
+.logo-container {
+    display: flex; /* Flexbox 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+   
+    margin-bottom: 25px; /* 로고와 버튼 사이의 간격 줄이기 */
+}
+
+/* 로고 이미지 스타일 */
+.logo {
+    width: 200px;
+    height: auto; /* 이미지 비율 유지 */
+}
+
+/* 메인 컨텐츠 스타일 */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* 버튼을 포함한 메인 컨테이너 스타일 */
+.main-buttons {
+    display: flex;
+    flex-direction: row; /* 버튼을 가로로 정렬 */
+    align-items: center; /* 버튼을 가운데 정렬 */
+    justify-content: center; /* 버튼을 컨테이너의 가운데 정렬 */
+    gap: 80px; /* 버튼 간의 간격 */
+    margin-left: 50px;
+    margin-bottom: 30px; /* 버튼과 게임 박스 사이의 간격 */
+}
+
+/* 버튼 스타일 */
+.game-button {
+    background-color: white; /* 기본 배경색 하얀색 */
+    border: 2px solid #4CAF50; /* 버튼 경계선 초록색 */
+    color: #4CAF50; /* 글자 색상 초록색 */
+    padding: 15px 30px; /* 버튼 안쪽 여백 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 텍스트 장식 제거 */
+    display: inline-block; /* 버튼의 인라인 블록 설정 */
+    font-size: 18px; /* 글자 크기 */
+    border-radius: 8px; /* 버튼 모서리 둥글기 */
+    cursor: pointer; /* 마우스 커서 포인터로 변경 */
+    transition: background-color 0.3s, color 0.3s; /* 배경색과 글자색 변화에 대한 전환 효과 */
+}
+
+/* 버튼에 마우스를 올렸을 때 스타일 */
+.game-button:hover {
+    background-color: #4CAF50; /* 배경색 초록색 */
+    color: white; /* 글자 색상 하얀색 */
+}
+
+/* 버튼 클릭 시 스타일 */
+.game-button:active {
+    background-color: #388e3c; /* 배경색 어두운 초록색 */
+    color: white; /* 글자 색상 하얀색 */
+}
+
+.game-button jebi-active {
+   background-color: #388e3c; /* 배경색 어두운 초록색 */
+    color: white; /* 글자 색상 하얀색 */
+   
+}
+
+/* 게임 박스 스타일 */
+.game-box {
+    width: calc(100% - 30px); /* 전체 너비에서 좌우 여백을 뺌 */
+    max-width: 1000px; /* 게임 박스의 최대 너비를 설정 */
+    height: 300px;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4CAF50;
+    font-size: 24px;
+    box-sizing: border-box; /* 경계선을 포함하여 너비 계산 */
+    margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    padding: 20px; /* 내부 여백 추가 */
+    position: relative; /* 추가적인 스타일을 위한 상대적 위치 지정 */
+}
+
+/* 홈 페이지의 게임 박스에만 적용되는 스타일 */
+
+
+.advertise1, .advertise2 {
+    margin: 20px auto; /* 광고 박스 위아래 간격 설정 */
+    text-align: center; /* 중앙 정렬 */
+    border: 1px solid #ddd; /* 얇은 경계선 추가 */
+    padding: 10px; /* 안쪽 여백 추가 */
+    height: 100px;
+    max-width: 1000px; /* 최대 너비 설정 */
+    box-sizing: border-box; /* 경계선을 포함하여 너비 계산 */
+}
+
+ .footer {
+            background-color: #000000; /* 어두운 배경 색상 */
+            color: #fff; /* 글자 색상 */
+            padding: 20px; /* 내부 여백 */
+            text-align: center; /* 중앙 정렬 */
+            position: relative; /* 위치 설정 */
+            width: 100%; /* 전체 너비 */
+            margin-top: auto; /* 컨텐츠 아래로 밀어내기 */
+        }
+
+        .footer .social-links {
+            margin-bottom: 15px; /* 소셜 링크와 저작권 간격 */
+        }
+
+        .footer .social-links a {
+            color: #fff; /* 링크 색상 */
+            margin: 0 10px; /* 링크 간 간격 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+            font-size: 1.5em; /* 아이콘 크기 */
+        }
+
+        .footer .social-links a:hover {
+            color: #f39c12; /* 호버 시 색상 변경 */
+        }
+
+        .footer .contact-info {
+            margin-bottom: 15px; /* 연락처와 저작권 간 간격 */
+        }
+
+        .footer .contact-info a {
+            color: #fff; /* 링크 색상 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        .footer .contact-info a:hover {
+            color: #f39c12; /* 호버 시 색상 변경 */
+        }
+
+        .footer .site-map {
+            margin-top: 15px; /* 사이트 맵과 저작권 간 간격 */
+        }
+
+        .footer .site-map a {
+            color: #fff; /* 링크 색상 */
+            margin: 0 10px; /* 링크 간 간격 */
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        .footer .site-map a:hover {
+            color: #f39c12; /* 호버 시 색상 변경 */
+        }
+
+        /* 아이콘 이미지 스타일 */
+        .footer .social-links img {
+            width: 24px; /* 아이콘 너비 */
+            height: 24px; /* 아이콘 높이 */
+            vertical-align: middle; /* 수직 정렬 */
+        }
+        
+         #ureka {
+    width: 100%; /* 너비를 부모 컨테이너의 100%로 설정 */
+    height: auto; /* 높이를 자동으로 조절하여 비율 유지 */
+    max-width: 800px; /* 최대 너비 설정 (예: 800px) */
+    display: block; /* 기본 블록 요소로 설정 */
+    margin: 20px auto; /* 상하 여백과 중앙 정렬 */
+}
+        
+        
+        
+		

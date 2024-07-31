@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벌칙은 너다! - 룰렛 게임</title>
+    
+    <link rel="icon" href="/img/minipunish.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+    
+     /* Body 및 전체 레이아웃 설정 */
+body {
+    background-image: url('/img/universe.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Nanum Pen Script', cursive;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 전체 페이지 높이를 뷰포트 높이로 설정 */
+    align-items: center; /* 수평 중앙 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+}
+
+.container {
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.header, .main-buttons, .rollinggame-box {
+    margin: 0 auto; /* 중앙 정렬을 위한 마진 설정 */
+}
+
+/* 로고 중앙 정렬 */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 버튼들을 가운데 정렬 */
+.main-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    margin: 30px auto; /* 상하 여백과 중앙 정렬 */
+}
+
+/* 돌림판 버튼 */
+.spin-button-container {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    margin: 20px auto; /* 상하 여백과 중앙 정렬 */
+}
+
+
+.item-inputs input[type="text"] {
+    width: 50%; 
+    max-width: 250px; 
+    margin: 10px 0;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.item-inputs input[type="text"]::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.item-inputs input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 입력 필드 스타일 */
+.item-inputs input[type="text"] {
+    width: 90%; /* 부모 컨테이너 너비에 맞게 조정 */
+    max-width: 50px; /* 최대 너비 설정 */
+    margin: 10px 0; /* 상하 여백 */
+}
+
+/* 버튼들 중앙 정렬 */
+.button-container {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    margin: 20px auto; /* 상하 여백과 중앙 정렬 */
+}
+
+/* 기타 스타일 유지 */
+.game-button {
+    background-color: white;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.game-button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.game-button:active {
+    background-color: #388e3c;
+    color: white;
+}
+
+.spin-button {
+    background-color: #ff6b6b;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.spin-button:hover {
+    background-color: #ff4c4c;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.spin-button:active {
+    background-color: #ff3a3a;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+
+.spin-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    transition: all 0.3s ease;
+    transform: scale(0);
+    z-index: -1;
+    border-radius: 50px;
+}
+
+.spin-button:hover::before {
+    transform: scale(2);
+    opacity: 0;
+}
+
+.spin-button span {
+    display: inline-block;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+.spin-button:hover span {
+    transform: scale(1.1);
+}
+
+.item-inputs input[type="text"] {
+    width: 90%;
+    max-width: 300px;
+    margin: 10px 0;
+}
+
+.button-container .add-button,
+.button-container .remove-button {
+    background-color: #6b8cff;
+    color: white;
+    font-size: 18px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.button-container .add-button:hover,
+.button-container .remove-button:hover {
+    background-color: #5a77e8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.button-container .add-button:active,
+.button-container .remove-button:active {
+    background-color: #4a67d9;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+
+.button-container .add-button::before,
+.button-container .remove-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    transition: all 0.3s ease;
+    transform: scale(0);
+    z-index: -1;
+    border-radius: 30px;
+}
+
+.button-container .add-button:hover::before,
+.button-container .remove-button:hover::before {
+    transform: scale(2);
+    opacity: 0;
+}
+
+.button-container .add-button span,
+.button-container .remove-button span {
+    display: inline-block;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+.button-container .add-button:hover span,
+.button-container .remove-button:hover span {
+    transform: scale(1.1);
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer .social-links {
+    margin-bottom: 15px;
+}
+
+.footer .social-links a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.footer .social-links a:hover {
+    color: #f39c12;
+}
+
+.footer .contact-info {
+    margin-bottom: 15px;
+}
+
+.footer .contact-info a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer .contact-info a:hover {
+    color: #f39c12;
+}
+
+.footer .site-map {
+    margin-top: 15px;
+}
+
+.footer .site-map a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer .site-map a:hover {
+    color: #f39c12;
+}
+
+.footer .social-links img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+#ureka {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    display: block;
+    margin: 20px auto;
+}
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="logo-container">
+            <a href="home.html">
+                <img src="/img/punishlogo.png" alt="Game Logo" class="logo">
+            </a>
+        </header>
+        <main class="main-buttons">
+            <a href="bomb.html" class="game-button">폭탄</a>
+            <a href="rolling.html" class="game-button bomb-active">돌림판</a>
+            <a href="jebi.html" class="game-button">제비뽑기</a>
+        </main>
+        <img src="/img/realmini.png" alt="Down Arrow">
+        <div class="rollinggame-box">
+            <canvas width="300" height="300"></canvas>
+
+            <!-- 룰렛 돌리기 버튼 -->
+            <div class="spin-button-container">
+                <button class="spin-button" onclick="rotate()">룰렛 돌리기</button>
+            </div>
+
+            <!-- 항목 입력 필드 -->
+            <div class="item-inputs">
+                <input type="text" placeholder="항목 1" value="항목1">
+                <input type="text" placeholder="항목 2" value="항목2">
+                <input type="text" placeholder="항목 3" value="항목3">
+                <input type="text" placeholder="항목 4" value="항목4">
+                <input type="text" placeholder="항목 5" value="항목5">
+                <input type="text" placeholder="항목 6" value="항목6">
+            </div>
+
+            <!-- 버튼들 -->
+            <div class="button-container">
+                <button class="add-button" onclick="addItem()">항목 추가</button>
+                <button class="remove-button" onclick="removeItem()">항목 제거</button>
+                <audio id="RollingAudio" src="/audio/rotateRolling.mp3"></audio>
+                 <audio id="successAudio" src="/audio/success.mp3"></audio>
+            </div>
+        </div>
+
+
+        
+    </div>
+     <img id="ureka" src="/img/ureka.jpg" alt="urekajpg">
+    
+     <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/e.jnn_/" target="_blank">
+                <img src="/img/instagramlogo.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/Eu1j1n" target="_blank">
+                <img src="/img/githublogo.png" alt="GitHub">
+            </a>
+        </div>
+        <div class="contact-info">
+            <p>이메일: <a href="dmlwls7094@naver.com">dmlwls7094@naver.com</a></p>
+        </div>
+        <div class="site-map">
+            <a href="home.html">홈</a> | 
+            <a href="bomb.html">폭탄</a> | 
+            <a href="rolling.html">돌림판</a> | 
+            <a href="jebi.html">제비뽑기</a>
+        </div>
+        <p>&copy; Copyright 2024. euijin All rights reserved.</p>
+    </footer>
+    
+    
+    <script src="/js/rolling.js"></script>
+</body>
+</html>

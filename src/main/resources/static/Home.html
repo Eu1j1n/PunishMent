@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>벌칙은 너다!</title>
+    <link rel="stylesheet" href="/css/homeStyle.css">
+    <link rel="icon" href="/img/minipunish.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+
+
+        
+        
+    <div class="container">
+        <header class="logo-container">
+            <a href="home.html">
+                <img src="/img/punishlogo.png" alt="Game Logo" class="logo">
+            </a>
+        </header>
+        
+        <div class="audio-controls">
+            <button id="playButton" onclick="toggleAudio()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+                    <path d="M8 5v14l11-7z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+            </button>
+        </div>
+        
+        <main class="main-buttons">
+            <a href="bomb.html" class="game-button">폭탄</a>
+            <a href="rolling.html" class="game-button">돌림판</a>
+            <a href="jebi.html" class="game-button">제비뽑기</a>
+        </main>
+        
+        <div class="game-box home-page">
+            <audio id="HomeAudio" src="/audio/ShopBgm.mp3"></audio>
+            <audio id="WhenTheMorningComes" src="/audio/WhenTheMorningComes.mp3"></audio>
+            <audio id="FantasticThinking" src="/audio/FantasticThinking.mp3"></audio>
+        </div>
+    </div>
+
+    <img id="ureka" src="/img/ureka.jpg" alt="urekajpg">
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/e.jnn_/" target="_blank">
+                <img src="/img/instagramlogo.png" alt="Instagram">
+            </a>
+            <a href="https://github.com/Eu1j1n" target="_blank">
+                <img src="/img/githublogo.png" alt="GitHub">
+            </a>
+        </div>
+        <div class="contact-info">
+            <p>이메일: <a href="mailto:dmlwls7094@naver.com">dmlwls7094@naver.com</a></p>
+        </div>
+        <div class="site-map">
+            <a href="home.html">홈</a> | 
+            <a href="bomb.html">폭탄</a> | 
+            <a href="rolling.html">돌림판</a> | 
+            <a href="jebi.html">제비뽑기</a>
+        </div>
+        <p>&copy; Copyright 2024. Euijin All rights reserved.</p>
+    </footer>
+
+    <script src="/js/home.js"></script>
+</body>
+</html>
